@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-import SDCAlertView
+
 
 class ViewController: UIViewController {
     // массива урлов разделен на картинки и папки и удаляем урл по индекспасу

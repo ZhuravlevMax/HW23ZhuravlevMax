@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
+    let keychain = KeychainSwift()
     var window: UIWindow?
     
     
@@ -39,7 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
         
-        if UserDefaults.standard.string(forKey: "password") == nil {
+        if keychain.get("password") == nil {
             showSecurityAlert()
         } else {
             showDeniedAlert()
@@ -97,8 +99,8 @@ extension SceneDelegate: UISceneDelegate {
                 emptyFieldAlert.addAction(okEmptyFieldAlertButton)
                 return
             }
-            //Сохраняю в UserDefaults
-            UserDefaults.standard.set("\(password)", forKey: "password")
+            //Сохраняю пароль в keychain
+            keychain.set("\(password)", forKey: "password")
         }
         
         //Кнопка cancel
@@ -140,7 +142,7 @@ extension SceneDelegate: UISceneDelegate {
             guard checkPasswordTextField.hasText, let checkPassword = checkPasswordTextField.text else {return}
             
             //Сравниваю сохраненный пароль с введенным
-            guard let passwordString = UserDefaults.standard.string(forKey: "password") else {return}
+            guard let passwordString = keychain.get("password") else {return}
             if checkPassword == passwordString{
                 accessDeniedAlet.dismiss(animated: true)
             } else {
