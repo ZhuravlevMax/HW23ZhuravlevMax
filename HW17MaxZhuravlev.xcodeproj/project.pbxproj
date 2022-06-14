@@ -18,6 +18,7 @@
 		9457477B283D5C55009B9787 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94574779283D5C55009B9787 /* LaunchScreen.storyboard */; };
 		94574784283E8826009B9787 /* CatalogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94574782283E8826009B9787 /* CatalogTableViewCell.swift */; };
 		94574785283E8826009B9787 /* CatalogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94574783283E8826009B9787 /* CatalogTableViewCell.xib */; };
+		9467C20D28590EE800ADD251 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9467C20C28590EE800ADD251 /* KeychainSwift */; };
 		94897A8E284748CA00460ED0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 94897A8D284748CA00460ED0 /* SnapKit */; };
 		94897A992847E3CB00460ED0 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94897A972847E3CB00460ED0 /* CollectionViewCell.swift */; };
 		94897A9A2847E3CB00460ED0 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94897A982847E3CB00460ED0 /* CollectionViewCell.xib */; };
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9467C20D28590EE800ADD251 /* KeychainSwift in Frameworks */,
 				94897A8E284748CA00460ED0 /* SnapKit in Frameworks */,
 				9449E05F28420A0E005C4134 /* SnapKit in Frameworks */,
 			);
@@ -184,6 +186,7 @@
 			packageProductDependencies = (
 				9449E05E28420A0E005C4134 /* SnapKit */,
 				94897A8D284748CA00460ED0 /* SnapKit */,
+				9467C20C28590EE800ADD251 /* KeychainSwift */,
 			);
 			productName = HW17MaxZhuravlev;
 			productReference = 9457476B283D5C50009B9787 /* HW17MaxZhuravlev.app */;
@@ -215,6 +218,7 @@
 			mainGroup = 94574762283D5C50009B9787;
 			packageReferences = (
 				9449E05D28420A0E005C4134 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				9467C20B28590EE800ADD251 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = 9457476C283D5C50009B9787 /* Products */;
 			projectDirPath = "";
@@ -483,6 +487,14 @@
 				kind = branch;
 			};
 		};
+		9467C20B28590EE800ADD251 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -490,6 +502,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9449E05D28420A0E005C4134 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		9467C20C28590EE800ADD251 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9467C20B28590EE800ADD251 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 		94897A8D284748CA00460ED0 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
