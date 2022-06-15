@@ -11,6 +11,11 @@ import KeychainSwift
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     let keychain = KeychainSwift()
+    
+    enum keychainKeys: String {
+        case password
+    }
+    
     var window: UIWindow?
     
     
@@ -100,7 +105,7 @@ extension SceneDelegate: UISceneDelegate {
                 return
             }
             //Сохраняю пароль в keychain
-            keychain.set("\(password)", forKey: "password")
+            keychain.set(password, forKey: keychainKeys.password.rawValue)
         }
         
         //Кнопка cancel
@@ -142,7 +147,7 @@ extension SceneDelegate: UISceneDelegate {
             guard checkPasswordTextField.hasText, let checkPassword = checkPasswordTextField.text else {return}
             
             //Сравниваю сохраненный пароль с введенным
-            guard let passwordString = keychain.get("password") else {return}
+            guard let passwordString = keychain.get(keychainKeys.password.rawValue) else {return}
             if checkPassword == passwordString{
                 accessDeniedAlet.dismiss(animated: true)
             } else {
