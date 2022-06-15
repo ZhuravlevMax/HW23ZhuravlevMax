@@ -46,7 +46,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
         
-        if keychain.get("password") == nil {
+        if keychain.get(keychainKeys.password.rawValue) == nil, UserDefaults.standard.string(forKey: keychainKeys.password.rawValue) == nil{
+            showSecurityAlert()
+        } else if keychain.get(keychainKeys.password.rawValue) != nil, UserDefaults.standard.string(forKey: keychainKeys.password.rawValue) == nil {
+            keychain.clear()
             showSecurityAlert()
         } else {
             showDeniedAlert()
@@ -107,6 +110,8 @@ extension SceneDelegate: UISceneDelegate {
             }
             //Сохраняю пароль в keychain
             keychain.set(password, forKey: keychainKeys.password.rawValue)
+            //Сохраняю в UserDefaults для последующего определения первого запуска приложения после установки
+            UserDefaults.standard.set(password, forKey: keychainKeys.password.rawValue)
         }
         
         //Кнопка cancel
