@@ -88,6 +88,7 @@ extension SceneDelegate: UISceneDelegate {
         //TextField для ввода пароля
         securityAlert.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Password"
+            textField.isSecureTextEntry = true
         }
         
         //Кнопка Set password
@@ -125,6 +126,7 @@ extension SceneDelegate: UISceneDelegate {
         //TextField для ввода пароля
         accessDeniedAlet.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Password"
+            textField.isSecureTextEntry = true
         }
         //кнопка Ок
         let okAccessDeniedAletButton = UIAlertAction(title: "Ok", style: .default) { [self] _ in
