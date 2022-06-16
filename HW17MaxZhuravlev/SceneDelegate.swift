@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     let keychain = KeychainSwift()
     
-    enum keychainKeys: String {
+    enum KeychainKeys: String {
         case password
     }
     
@@ -46,9 +46,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
         
-        if keychain.get(keychainKeys.password.rawValue) == nil {
+        if keychain.get(KeychainKeys.password.rawValue) == nil {
             showSecurityAlert()
-        } else if keychain.get(keychainKeys.password.rawValue) != nil, UserDefaults.standard.string(forKey: keychainKeys.password.rawValue) == nil {
+        } else if keychain.get(KeychainKeys.password.rawValue) != nil, UserDefaults.standard.string(forKey: KeychainKeys.password.rawValue) == nil {
             keychain.clear()
             showSecurityAlert()
         } else {
@@ -109,9 +109,9 @@ extension SceneDelegate: UISceneDelegate {
                 return
             }
             //Сохраняю пароль в keychain
-            keychain.set(password, forKey: keychainKeys.password.rawValue)
+            keychain.set(password, forKey: KeychainKeys.password.rawValue)
             //Сохраняю в UserDefaults для последующего определения первого запуска приложения после установки
-            UserDefaults.standard.set(password, forKey: keychainKeys.password.rawValue)
+            UserDefaults.standard.set(password, forKey: KeychainKeys.password.rawValue)
         }
         
         //Кнопка cancel
@@ -154,7 +154,7 @@ extension SceneDelegate: UISceneDelegate {
             guard checkPasswordTextField.hasText, let checkPassword = checkPasswordTextField.text else {return}
             
             //Сравниваю сохраненный пароль с введенным
-            guard let passwordString = keychain.get(keychainKeys.password.rawValue) else {return}
+            guard let passwordString = keychain.get(KeychainKeys.password.rawValue) else {return}
             if checkPassword == passwordString{
                 accessDeniedAlet.dismiss(animated: true)
             } else {
